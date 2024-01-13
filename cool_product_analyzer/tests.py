@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch
 from main import fetch_products_from_api, Product, Dimensions
 
 class TestProductFunctions(unittest.TestCase):
+    api_url = "https://shipping-mock.api.prod.coolshop.com/products"
 
     @patch('requests.get')
     def test_fetch_products_from_api_success(self, mock_get):
@@ -28,8 +29,7 @@ class TestProductFunctions(unittest.TestCase):
         mock_get.return_value = mock_response
 
         # Call the function and check the result
-        url = "https://shipping-mock.api.prod.coolshop.com/products"
-        products = fetch_products_from_api(url)
+        products = fetch_products_from_api(self.api_url)
         self.assertIsNotNone(products)
         self.assertIsInstance(products[0], Product)
     
@@ -42,8 +42,7 @@ class TestProductFunctions(unittest.TestCase):
         mock_get.return_value = mock_response
 
         # Call the function and check the result
-        url = "https://shipping-mock.api.prod.coolshop.com/products"
-        products = fetch_products_from_api(url)
+        products = fetch_products_from_api(self.api_url)
         self.assertIsNone(products)
     
     def test_product_from_json(self):
