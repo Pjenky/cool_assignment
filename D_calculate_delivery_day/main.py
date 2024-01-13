@@ -1,7 +1,7 @@
 from datetime import timedelta, time, datetime, timezone
 import pytz
 # TODO: 
-# remove pytz dependency
+# remove pytz dependency due to deprecation
 # potentially use Sets instead of Lists for faster lookup in is_closed()
 
 # Meeus/Jones/Butcher algorithm for calculating the date of Easter
