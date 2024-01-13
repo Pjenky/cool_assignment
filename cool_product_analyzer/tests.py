@@ -48,26 +48,26 @@ class TestProductFunctions(unittest.TestCase):
     def test_product_from_json(self):
         # Create a sample JSON data for a product
         json_data = {
-            "id": 1,
-            "title": "Testing Product",
-            "description": "This is a product for testing purposes.",
+            "id": 2,
+            "title": "Testing Product 2",
+            "description": "This is a second product for testing purposes.",
             "category": "Testing",
             "price": 999999999999,
             "stock_status": "in_stock",
             "dimensions": {
-                "length_mm": 1,
-                "width_mm": 1,
-                "height_mm": 1,
-                "weight_g": 1
+                "length_mm": 2,
+                "width_mm": 2,
+                "height_mm": 2,
+                "weight_g": 2
             }
         }
 
         # Call the class method and check the result
         product = Product.from_json(json_data)
         self.assertIsInstance(product, Product)
-        self.assertEqual(product.id, 1)
-        self.assertEqual(product.title, "Testing Product")
-        self.assertEqual(product.description, "This is a product for testing purposes.")
+        self.assertEqual(product.id, 2)
+        self.assertEqual(product.title, "Testing Product 2")
+        self.assertEqual(product.description, "This is a second product for testing purposes.")
 
 if __name__ == '__main__':
     unittest.main()
