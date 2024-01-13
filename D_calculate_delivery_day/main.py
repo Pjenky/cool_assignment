@@ -1,5 +1,8 @@
 from datetime import timedelta, time, datetime, timezone
 import pytz
+# TODO: 
+# remove pytz dependency
+# potentially use Sets instead of Lists for faster lookup in is_closed()
 
 # Meeus/Jones/Butcher algorithm for calculating the date of Easter
 def calculate_easter_day(year):
@@ -20,7 +23,6 @@ def calculate_easter_day(year):
     return datetime(year, month, day)
 
 # Function to check if a given date is a holiday
-# Could potentially use Sets instead of lists for faster lookup
 def is_closed(dt):
     easter_day = calculate_easter_day(dt.year)
     days_closed = [datetime(dt.year, 1, 1), # Nytårsdag
