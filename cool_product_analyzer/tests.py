@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from main import fetch_products_from_api, Product, Dimensions
+from main import fetch_products_from_api, Product
 
 class TestProductFunctions(unittest.TestCase):
     api_url = "https://shipping-mock.api.prod.coolshop.com/products"
