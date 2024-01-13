@@ -46,7 +46,7 @@ class TestDeliveryFunctions(unittest.TestCase):
         # Test cases
         test_orders = [
             (datetime(2021, 5, 20, 12, 51, 32, 199883, timezone.utc), datetime(2021, 5, 21).date()),
-            (datetime(2021, 5, 20, 14, 3, 31, 245381, timezone.utc), datetime(2021, 5, 25).date()),
+            (datetime(2021, 5, 20, 13, 3, 31, 245381, timezone.utc), datetime(2021, 5, 25).date()),
             (datetime(2020, 12, 29, 12, 15, 12, 0, timezone.utc), datetime(2020, 12, 30).date()),
             (datetime(2020, 12, 29, 14, 15, 12, 0, timezone.utc), datetime(2021, 1, 4).date()),
         ]

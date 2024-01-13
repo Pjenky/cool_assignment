@@ -74,10 +74,10 @@ def get_delivery_date(order_datetime):
 
 # Example usage:
 example_orders = [datetime(2021, 5, 20, 12, 51, 32, 199883, timezone.utc),
-                    datetime(2021, 5, 20, 14, 3, 31, 245381, timezone.utc),
+                    datetime(2021, 5, 20, 13, 3, 31, 245381, timezone.utc),
                     datetime(2020, 12, 29, 12, 15, 12, 0, timezone.utc),
                     datetime(2020, 12, 29, 14, 15, 12, 0, timezone.utc)]
 for i in example_orders:
     print("Order Placed:", i.strftime("%d-%m-%Y %H:%M:%S %Z"))
-    print("Estimated Delivery Time:", get_delivery_date(i).strftime("%d-%m-%Y"))
+    print("Estimated Delivery Date:", get_delivery_date(i).strftime("%d-%m-%Y"))
     print()
