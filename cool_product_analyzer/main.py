@@ -1,4 +1,5 @@
 import requests
+import logging
 from classes.product import Product
 
 def fetch_products_from_api(api_url):
@@ -10,8 +11,8 @@ def fetch_products_from_api(api_url):
         return products_objects
     else:
         # There was an error with the request
-        print("Error:", response.status_code)
-        print("Error details:", response.text)
+        logging.error("Error: %d", response.status_code)
+        logging.error("Error details: %s", response.text)
         return None
 
 def print_product(product):

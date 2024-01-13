@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock, patch, call
 from main import fetch_products_from_api, Product
 
 class TestProductFunctions(unittest.TestCase):
@@ -34,7 +34,8 @@ class TestProductFunctions(unittest.TestCase):
         self.assertIsInstance(products[0], Product)
     
     @patch('requests.get')
-    def test_fetch_products_from_api_failure(self, mock_get):
+    @patch('main.logging.error')
+    def test_fetch_products_from_api_failure(self, mock_logging_error, mock_get):
         # Set up a mock response for a failed API call
         mock_response = MagicMock()
         mock_response.status_code = 404
@@ -43,6 +44,13 @@ class TestProductFunctions(unittest.TestCase):
 
         # Call the function and check the result
         products = fetch_products_from_api(self.api_url)
+
+        # Verify that the logging.error method was called with the expected messages
+        expected_calls = [
+            call("Error: %d", 404),
+            call("Error details: %s", "Not Found")
+        ]
+        mock_logging_error.assert_has_calls(expected_calls)
         self.assertIsNone(products)
     
     def test_product_from_json(self):
