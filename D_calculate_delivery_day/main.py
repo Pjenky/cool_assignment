@@ -3,6 +3,7 @@ import pytz
 # TODO: 
 # remove pytz dependency due to deprecation
 # potentially use Sets instead of Lists for faster lookup in is_closed()
+# use dateutil.easter.easter(year) instead of calculate_easter_day()
 
 # Meeus/Jones/Butcher algorithm for calculating the date of Easter
 def calculate_easter_day(year):
@@ -25,21 +26,21 @@ def calculate_easter_day(year):
 # Function to check if a given date is a holiday
 def is_closed(dt):
     easter_day = calculate_easter_day(dt.year)
-    days_closed = [datetime(dt.year, 1, 1), # Nytårsdag
-                     easter_day - timedelta(days=7), # Palmesøndag
-                     easter_day - timedelta(days=3), # Skærtorsdag
-                     easter_day - timedelta(days=2), # Langfredag
-                     easter_day, # Påskedag
-                     easter_day + timedelta(days=1), # 2. påskedag
+    days_closed = [datetime(dt.year, 1, 1), #           Nytårsdag
+                     easter_day - timedelta(days=7), #  Palmesøndag
+                     easter_day - timedelta(days=3), #  Skærtorsdag
+                     easter_day - timedelta(days=2), #  Langfredag
+                     easter_day, #                      Påskedag
+                     easter_day + timedelta(days=1), #  2. påskedag
                      easter_day + timedelta(days=26), # Store bededag (i mine øjne er det stadig en helligdag)
                      easter_day + timedelta(days=39), # Kristi himmelfartsdag
                      easter_day + timedelta(days=49), # Pinsedag
                      easter_day + timedelta(days=50), # 2. pinsedag
-                     datetime(dt.year, 6, 5), # Grundlovsdag
-                     datetime(dt.year, 12, 24), # Juleaften
-                     datetime(dt.year, 12, 25), # Juledag
-                     datetime(dt.year, 12, 26), # 2. juledag
-                     datetime(dt.year, 12, 31) # Nytårsaften
+                     datetime(dt.year, 6, 5), #         Grundlovsdag
+                     datetime(dt.year, 12, 24), #       Juleaften
+                     datetime(dt.year, 12, 25), #       Juledag
+                     datetime(dt.year, 12, 26), #       2. juledag
+                     datetime(dt.year, 12, 31) #        Nytårsaften
                      ]
     
     if dt in days_closed:

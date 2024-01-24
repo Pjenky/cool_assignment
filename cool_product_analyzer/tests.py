@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch, call
 from main import fetch_products_from_api, Product
 
 class TestProductFunctions(unittest.TestCase):
-    api_url = "https://shipping-mock.api.prod.coolshop.com/products"
+    mock_api_url = "http://mock-api/products"
 
     @patch('requests.get')
     def test_fetch_products_from_api_success(self, mock_get):
@@ -29,7 +29,7 @@ class TestProductFunctions(unittest.TestCase):
         mock_get.return_value = mock_response
 
         # Call the function and check the result
-        products = fetch_products_from_api(self.api_url)
+        products = fetch_products_from_api(self.mock_api_url)
         self.assertIsNotNone(products)
         self.assertIsInstance(products[0], Product)
     
@@ -43,7 +43,7 @@ class TestProductFunctions(unittest.TestCase):
         mock_get.return_value = mock_response
 
         # Call the function and check the result
-        products = fetch_products_from_api(self.api_url)
+        products = fetch_products_from_api(self.mock_api_url)
 
         # Verify that the logging.error method was called with the expected messages
         expected_calls = [
